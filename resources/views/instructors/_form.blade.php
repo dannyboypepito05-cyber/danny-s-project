@@ -1,0 +1,12 @@
+@if($errors->any())<div class="mb-4 rounded-md bg-rose-50 p-4 text-sm text-rose-700"><ul>@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
+<div class="grid gap-6 md:grid-cols-2">
+    <div><x-input-label for="name" value="Full name" /><x-text-input id="name" name="name" class="mt-1 block w-full" value="{{ old('name', $instructor->name ?? '') }}" required /></div>
+    <div><x-input-label for="email" value="Email" /><x-text-input id="email" type="email" name="email" class="mt-1 block w-full" value="{{ old('email', $instructor->email ?? '') }}" required /></div>
+    <div><x-input-label for="phone" value="Phone" /><x-text-input id="phone" name="phone" class="mt-1 block w-full" value="{{ old('phone', $instructor->phone ?? '') }}" /></div>
+    <div><x-input-label for="specialization" value="Specialization" /><x-text-input id="specialization" name="specialization" class="mt-1 block w-full" value="{{ old('specialization', $instructor->specialization ?? '') }}" required /></div>
+    <div><x-input-label for="qualification" value="Qualification" /><x-text-input id="qualification" name="qualification" class="mt-1 block w-full" value="{{ old('qualification', $instructor->qualification ?? '') }}" required /></div>
+    <div><x-input-label for="years_experience" value="Years of experience" /><x-text-input id="years_experience" type="number" min="0" max="60" name="years_experience" class="mt-1 block w-full" value="{{ old('years_experience', $instructor->years_experience ?? 0) }}" required /></div>
+    <div><x-input-label for="quality_score" value="Quality score (0-5)" /><x-text-input id="quality_score" type="number" step="0.01" min="0" max="5" name="quality_score" class="mt-1 block w-full" value="{{ old('quality_score', $instructor->quality_score ?? 0) }}" required /></div>
+    <div><x-input-label for="status" value="Status" /><select id="status" name="status" class="mt-1 block w-full rounded-md border-gray-300" required>@foreach(['Active','On Leave','Inactive'] as $status)<option value="{{ $status }}" @selected(old('status', $instructor->status ?? 'Active') === $status)>{{ $status }}</option>@endforeach</select></div>
+    <div class="md:col-span-2"><x-input-label for="bio" value="Professional profile" /><textarea id="bio" name="bio" rows="4" class="mt-1 block w-full rounded-md border-gray-300">{{ old('bio', $instructor->bio ?? '') }}</textarea></div>
+</div>

@@ -1,0 +1,39 @@
+<x-app-layout>
+    <x-slot name="header">
+        <div class="flex items-center justify-between gap-4">
+            <h2 class="text-xl font-semibold leading-tight text-slate-100">Section Details</h2>
+            <a href="{{ route('sections.index') }}" class="text-sm font-medium text-slate-300 hover:text-white">Back to sections</a>
+        </div>
+    </x-slot>
+
+    <div class="bg-slate-950 py-8">
+        <div class="mx-auto max-w-3xl rounded-2xl border border-slate-800 bg-slate-900/80 p-6 shadow-xl shadow-slate-950/30">
+            <div class="flex items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div>
+                    <p class="text-sm uppercase tracking-[0.22em] text-indigo-200">Section</p>
+                    <h3 class="mt-2 text-3xl font-bold text-white">{{ $section->name }}</h3>
+                </div>
+                <span class="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">{{ $section->status }}</span>
+            </div>
+
+            <dl class="mt-6 space-y-4 text-sm text-slate-300">
+                <div class="flex justify-between gap-3 border-b border-slate-800 pb-3">
+                    <dt class="text-slate-400">Program</dt>
+                    <dd class="font-medium text-slate-100">{{ $section->program?->name ?? 'N/A' }}</dd>
+                </div>
+                <div class="flex justify-between gap-3 border-b border-slate-800 pb-3">
+                    <dt class="text-slate-400">Academic Year</dt>
+                    <dd class="font-medium text-slate-100">{{ $section->academic_year }}</dd>
+                </div>
+                <div class="flex justify-between gap-3 border-b border-slate-800 pb-3">
+                    <dt class="text-slate-400">Semester</dt>
+                    <dd class="font-medium text-slate-100">{{ $section->semester }}</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                    <dt class="text-slate-400">Year Level</dt>
+                    <dd class="font-medium text-slate-100">{{ $section->year_level }}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</x-app-layout>
